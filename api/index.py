@@ -13,7 +13,7 @@ mysql = mysql.connector.connect(
 
 intents = discord.Intents.default()
 intents.message_content = True
-app = commands.Bot(command_prefix='!', intents=intents)
+app = discord.Client(intents=intents)
 
 
 @app.event
