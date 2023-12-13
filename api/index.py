@@ -13,22 +13,22 @@ mysql = mysql.connector.connect(
 
 intents = discord.Intents.default()
 intents.message_content = True
-bot = commands.Bot(command_prefix='!', intents=intents)
+app = commands.Bot(command_prefix='!', intents=intents)
 
 
-@bot.event
+@app.event
 async def on_ready():
-    print(f'{bot.user} is now running!')
+    print(f'{app.user} is now running!')
 
 
-@bot.event
+@app.event
 async def on_message(message):
-    if message.author == bot.user:
+    if message.author == app.user:
         return
 
     server_name = message.author.guild.name
 
-    if bot.user.mentioned_in(message):
+    if app.user.mentioned_in(message):
         await send_message(message, server_name)
 
 
@@ -47,4 +47,4 @@ if __name__ == '__main__':
 
     TOKEN = bot_token['token']
 
-    bot.run(TOKEN)
+    app.run(TOKEN)
